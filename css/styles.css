@@ -1,0 +1,76 @@
+body {
+  font-family: 'Bangers', cursive;
+}
+
+img {
+    border:  solid silver 0.5px;
+    width: 80%;
+    box-shadow: 10px 5px 5px silver;
+    padding: 15px;
+    margin: 5px;
+}
+
+
+/**
+Animação baseada no exemplo da w3schools
+https://www.w3schools.com/css/css3_animations.asp
+*/
+.animacao {
+    position: relative;
+    -webkit-animation-name: balanca; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 0.2s; /* Safari 4.0 - 8.0 */
+    animation-name: balanca;
+    animation-duration: 1.5s;
+    animation-delay: 0.2s;
+}
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes balanca {
+    0%   {left:0px; top:0px;}
+    5%   {left:5px; top:5px;}
+    10%  {left:0px; top:0px;}
+    15%  {left:5px; top:5px;}
+    20%  {left:0px; top:0px;}
+    25%  {left:5px; top:5px;}
+    30%  {left:0px; top:0px;}
+    35%  {left:5px; top:5px;}
+    40%  {left:0px; top:0px;}
+    45%  {left:5px; top:5px;}
+    50%  {left:0px; top:0px;}
+    60%  {left:0px; top:0px;}
+    65%  {left:5px; top:5px;}
+    70%  {left:0px; top:0px;}
+    75%  {left:5px; top:5px;}
+    80%  {left:0px; top:0px;}
+    85%  {left:5px; top:5px;}
+    90%  {left:0px; top:0px;}
+    95%  {left:5px; top:5px;}
+    100% {left:0px; top:0px;}
+  }
+  
+  /* Standard syntax */
+  @keyframes balanca {
+    0%   {left:0px; top:0px;}
+    5%   {left:5px; top:5px;}
+    10%  {left:0px; top:0px;}
+    15%  {left:5px; top:5px;}
+    20%  {left:0px; top:0px;}
+    25%  {left:5px; top:5px;}
+    30%  {left:0px; top:0px;}
+    35%  {left:5px; top:5px;}
+    40%  {left:0px; top:0px;}
+    45%  {left:5px; top:5px;}
+    50%  {left:0px; top:0px;}
+    60%  {left:0px; top:0px;}
+    65%  {left:5px; top:5px;}
+    70%  {left:0px; top:0px;}
+    75%  {left:5px; top:5px;}
+    80%  {left:0px; top:0px;}
+    85%  {left:5px; top:5px;}
+    90%  {left:0px; top:0px;}
+    95%  {left:5px; top:5px;}
+    100% {left:0px; top:0px;}
+  }
+  
