@@ -4,11 +4,12 @@ body {
 
 img {
     border:  solid silver 0.5px;
-    width: 80%;
     box-shadow: 10px 5px 5px silver;
     padding: 15px;
     margin: 5px;
 }
+
+
 
 
 /**

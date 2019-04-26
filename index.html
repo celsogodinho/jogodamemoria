@@ -23,13 +23,13 @@
             </div>
         </header>
 
-        <nav class="row text-left">
+        <nav class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">
                 <button id="reiniciar" class="btn btn-primary btn-lg">Reiniciar jogo</button>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-default btn-lg">Tempo: <span id="tempo"></span> segundos.</button>
+                <button class="btn btn-default btn-lg">Tempo: <span id="tempo"></span>.</button>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-default btn-lg">Tentativas: <span id="tentativas"></span> .</button>
@@ -45,132 +45,147 @@
 
         <main>
             <div class="row"> <!-- 1º linha-->
-                <div class="col-md-3">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao00" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao01" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao02" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao03" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
+                <div class="col-md-2"></div>
             </div>
 
             <div class="row"> <!-- 2º linha-->
-                <div class="col-md-3">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao10" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao11" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao12" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao13" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
+                <div class="col-md-2"></div>
             </div>
 
             <div class="row"> <!-- 3º linha-->
-                <div class="col-md-3">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao20" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao21" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao22" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao23" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
+                <div class="col-md-2"></div>
             </div>
 
             <div class="row"> <!-- 4º linha-->
-                <div class="col-md-3">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao30" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao31" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao32" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <picture>
                             <figure>
                                 <img id="cartao33" class="img-responsive center-block" src="" alt="">
                             </figure>
                     </picture>
                 </div>
+                <div class="col-md-2"></div>
             </div>
 
         </main>
 
-        <footer>
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+            </div>
+        </div>
+    
+
+        <footer class="jumbotron">
             <div class="row">
                 <div class="col-md-12">
                     <hr>
@@ -221,7 +236,35 @@
                 </div>
             </div>      
         </footer>
+    
+        <!-- Modal -->
+        <div id="fimJogoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <h1>Parabéns! Você venceu!</h1>
+                    <h2>Tempo: <span id="tempoFinal"></span></h2>
+                    <h2>Total de Jogadas: <span id="totalJogadas"></span></h2>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="jogarNovamente" type="button" class="btn btn-default" data-dismiss="modal">
+                        Jogar Novamente
+                    </button>
+                </div>
+
+            </div>
+        
+            </div>
+        </div>    
+
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

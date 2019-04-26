@@ -1,11 +1,32 @@
+$("#fimJogoModal").modal('hide');
 
-// Array com as imagens que podem ser usadas no jogo
-var imgsCartoes = [
-    "cachorro.jpg", "cavalo.jpg", "coala.jpg",  "esquilo.jpg", 
-    "pato.jpg", "preguica.jpg",  "tigre.jpg",  "vaca.jpg",  
-    "cachorro.jpg", "cavalo.jpg", "coala.jpg", "esquilo.jpg", 
-    "pato.jpg", "preguica.jpg",  "tigre.jpg",  "vaca.jpg",              
-];
+// Número de tentativas do jogador. Cada dois clicks em imagens é contado
+// como uma tentativas.
+var tentativas;
+
+// Tempo medido em segundos a partir do início do jogo
+var tempo;
+var temporizador;
+
+function registraTentativas(numTentativas){
+    document.getElementById("tentativas").innerHTML = numTentativas;
+}
+
+function tempoAtual(t){
+    var min, seg;
+
+    min = Math.floor(t/60);
+    seg = t%60;
+    // Coloca zero a esquerda
+    min = min < 10? "0" + min : min;
+    seg = seg < 10? "0" + seg : seg;
+
+    return `${min} min ${seg} s`;
+}
+
+function incrementaTempo(){
+    document.getElementById("tempo").innerHTML = tempoAtual(++tempo);
+}
 
 // Objeto que armazena as informações do jogo e de cada cartão
 var jogo = {
@@ -43,14 +64,24 @@ function verificaCoincidencia(){
         document.getElementById(jogo.idSegCartao).src = jogo.imagemVerso;
     }
 
+    if(jogo.terminou()){
+        document.getElementById("tempoFinal").innerHTML = tempoAtual(tempo);
+        clearTimeout(temporizador);
+        document.getElementById("totalJogadas").innerHTML = tentativas;
+        $("#fimJogoModal").modal('show');
+    }
     // resetamos o id dos cartões virados
     jogo.idPrimCartao = '';
     jogo.idSegCartao = '';
     
 }
 
-
-// Executa a lógica do jogo
+/**
+* @description Executa a lógica do jogo
+* @param {number} a
+* @param {number} b
+* @returns {number} Sum of a and b
+*/
 function jogar(){
     let idCartao = this.id;
 
@@ -60,6 +91,8 @@ function jogar(){
         // mostra a imagem do cartão
         this.src = jogo[idCartao]; 
     } else { // Há um cartão virado
+        // Segundo click em imagens registra a jogada
+        registraTentativas(++tentativas);
         // Verifica se o cartão anteriormente virado é o clicado agora
         if(jogo.idPrimCartao == idCartao){// cartão virado foi clicado
             // mostramos a imagem de verso e resetamos o virado
@@ -102,25 +135,46 @@ function obtemImagem(imagens){
  * Inicialização do jogo
  * Definição das imagens de forma aleatória
  */
+function inicializaJogo() {
+    tentativas = 0;
+    tempo = 0;
 
-for (i=0; i < 4; i++){
-    for(j=0; j<4; j++){
-        // Monta o id da img do cartao
-        let idCartao = 'cartao' + i + j;
-        // Obtem o caminho da imagem
-        let pathImg = 'img/' + obtemImagem(imgsCartoes);
+    // Array com as imagens que podem ser usadas no jogo
+    let imgsCartoes = [
+        "cachorro.jpg", "cavalo.jpg", "coala.jpg",  "esquilo.jpg", 
+        "pato.jpg", "preguica.jpg",  "tigre.jpg",  "vaca.jpg",  
+        "cachorro.jpg", "cavalo.jpg", "coala.jpg", "esquilo.jpg", 
+        "pato.jpg", "preguica.jpg",  "tigre.jpg",  "vaca.jpg",              
+    ];
 
-        /**
-         * O objeto jogo terá um atributo igual ao id de cada imagem cujo 
-         * valor é o caminho da imagem
-         */
-
-        jogo[idCartao] = pathImg;
-        document.getElementById(idCartao).src = jogo.imagemVerso;
-        document.getElementById(idCartao).addEventListener("click", jogar);
+    for (i=0; i < 4; i++){
+        for(j=0; j<4; j++){
+            // Monta o id da img do cartao
+            let idCartao = 'cartao' + i + j;
+            // Obtem o caminho da imagem
+            let pathImg = 'img/' + obtemImagem(imgsCartoes);
+    
+            /**
+             * O objeto jogo terá um atributo igual ao id de cada imagem cujo 
+             * valor é o caminho da imagem
+             */
+    
+            jogo[idCartao] = pathImg;
+            document.getElementById(idCartao).src = jogo.imagemVerso;
+            document.getElementById(idCartao).addEventListener("click", jogar);
+        }
     }
+    
+    registraTentativas(tentativas);
+    // Executa o incremento de tempo de 1 em 1 segundo
+    temporizador = setInterval(incrementaTempo, 1000);
 }
 
+inicializaJogo();
 
+// Botão iniciar jogo
+document.getElementById("reiniciar").addEventListener("click", inicializaJogo);
+// Botão jogar novamente do modal
+document.getElementById("jogarNovamente").addEventListener("click", inicializaJogo);
 
 
