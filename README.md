@@ -13,7 +13,7 @@ Do projeto baixado, abra o arquivo index.html ou acesse o endereço http://jogod
 ## Como jogar
 
 - Escolha um cartão clicando nele. Ele será desvirado;
-- Escolha o segundo cartão, se formarem um par, eles são eliminados. Caso contrário, eles são viradas novamente e conta-se uma tentativa;
+- Escolha o segundo cartão, se formarem um par, eles são eliminados. Caso contrário, eles são virados novamente e conta-se uma tentativa;
 - Encontre todos os pares para vencer o jogo.
 
 **Observações**: use o botão reiniciar para que o jogo volte as configurações iniciais
