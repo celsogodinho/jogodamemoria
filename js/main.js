@@ -1,3 +1,4 @@
+"use strict";
 // Esconde a janela modal 
 $("#fimJogoModal").modal('hide');
 
@@ -141,6 +142,26 @@ function adicionaEventos(){
 * @returns void
 */
 function verificaCoincidencia(){
+    // Segundo clique em imagens diferentes. Registra a jogada
+    registraTentativas(++tentativas);
+    // Retira estrelas baseado no número de tentativas
+    switch (tentativas) {
+        case 17: decrementaEstrela(5);
+                 estrelas--;
+        break;
+        case 22: decrementaEstrela(4);
+                 estrelas--;
+        break;
+        case 27: decrementaEstrela(3);
+                 estrelas--;
+        break;
+        case 32: decrementaEstrela(2);
+                 estrelas--;
+        break;
+        case 37: decrementaEstrela(1);
+                 estrelas--;
+        break;
+    }
 
     document.getElementById(jogo.idPrimCartao).classList.remove("animacao");
     document.getElementById(jogo.idSegCartao).classList.remove("animacao");
@@ -199,27 +220,6 @@ function jogar(){
         // mostra a imagem do cartão
         this.src = jogo[idCartao]; 
     } else { // Há um cartão virado
-        // Segundo click em imagens registra a jogada
-        registraTentativas(++tentativas);
-        // Retira estrelas baseado no número de tentativas
-        switch (tentativas) {
-            case 17: decrementaEstrela(5);
-                     estrelas--;
-            break;
-            case 22: decrementaEstrela(4);
-                     estrelas--;
-            break;
-            case 27: decrementaEstrela(3);
-                     estrelas--;
-            break;
-            case 32: decrementaEstrela(2);
-                     estrelas--;
-            break;
-            case 37: decrementaEstrela(1);
-                     estrelas--;
-            break;
-        }
-
         // Verifica se o cartão anteriormente virado é o clicado agora
         if(jogo.idPrimCartao == idCartao){// cartão virado foi clicado
             // mostramos a imagem de verso e resetamos o virado
@@ -271,6 +271,8 @@ function obtemImagem(imagens){
 function inicializaJogo() {
     estrelas = 5;
     tentativas = 0;
+    jogo.idPrimCartao = '';
+    jogo.idSegCartao = '';
     tempo = 0;
     jogo.descobertas = 0;
     jogo.cartoesDescobertos = [];
@@ -293,8 +295,8 @@ function inicializaJogo() {
         "pato.jpg", "preguica.jpg",  "tigre.jpg",  "vaca.jpg",              
     ];
 
-    for (i=0; i < 4; i++){
-        for(j=0; j<4; j++){
+    for (let i=0; i < 4; i++){
+        for(let j=0; j<4; j++){
             // Monta o id da img do cartao
             let idCartao = 'cartao' + i + j;
             // Obtem o caminho da imagem
